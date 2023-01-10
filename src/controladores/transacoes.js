@@ -1,5 +1,5 @@
 const bancodedados = require("../dados/bancodedados");
-const { contas } = require("../dados/bancodedados");
+
 const {
   dataDaOperacao,
   filtrarConta,
@@ -18,7 +18,7 @@ const depositar = (req, res) => {
 
   deposito(numero_conta, valor);
 
-  return res.status(201).json();
+  return res.status(201).json({ mensagem: "Depósito realizado com sucesso!" });
 };
 
 const sacar = (req, res) => {
@@ -26,7 +26,9 @@ const sacar = (req, res) => {
 
   saque(numero_conta, valor);
 
-  return res.status(201).json();
+  return res
+    .status(201)
+    .json({ mensagem: `Saque de ${valor} realizado com sucesso` });
 };
 
 const transferir = (req, res) => {
@@ -66,7 +68,9 @@ const transferir = (req, res) => {
     valor,
   });
 
-  return res.status(201).json();
+  return res
+    .status(201)
+    .json({ mensagem: "Transferência realizada com sucesso!" });
 };
 
 const extrato = (req, res) => {
@@ -79,7 +83,7 @@ const extrato = (req, res) => {
   }
 
   if (senha !== contaEcontrada.usuario.senha) {
-    res.status(401).json({ mensagem: "Senha inválida!" });
+    return res.status(401).json({ mensagem: "Senha inválida!" });
   }
 
   const depositos = bancodedados.depositos.filter(

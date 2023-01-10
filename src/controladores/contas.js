@@ -24,7 +24,7 @@ const criarConta = (req, res) => {
     },
   });
   idProximaContaCriada++;
-  return res.status(201).json();
+  return res.status(201).json({ mensagem: "Conta criada com sucesso!" });
 };
 
 const atualizarUsuario = (req, res) => {
@@ -72,7 +72,7 @@ const deletarConta = (req, res) => {
 
   contas.splice(indiceConta, 1);
 
-  return res.json();
+  return res.json({ mensagem: "Conta removida com sucesso!" });
 };
 
 module.exports = {
