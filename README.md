@@ -14,7 +14,7 @@ Seu papel é construir uma RESTful API que permita:
 - Consultar saldo da conta bancária
 - Emitir extrato bancário
 
-**Importante: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
+**Importante: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação.**
 
 **Exemplo:**
 
