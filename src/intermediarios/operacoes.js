@@ -20,9 +20,7 @@ function verificaSenhaESaldo(req, res, next) {
     return res.status(404).json({ mensagem: "Informe a senha!" });
   }
 
-  contaAtual = contas.find((conta) => {
-    return conta.numero === Number(numero_conta);
-  });
+  contaAtual = filtrarConta(numero_conta);
 
   if (senha !== contaAtual.usuario.senha) {
     return res.status(401).json({ mensagem: "Senha inválida!" });
@@ -37,13 +35,9 @@ function verificaSenhaESaldo(req, res, next) {
 function verificaContasExistem(req, res, next) {
   const { numero_conta_origem, numero_conta_destino } = req.body;
 
-  const contaOrigem = contas.find((conta) => {
-    return conta.numero === Number(numero_conta_origem);
-  });
+  const contaOrigem = filtrarConta(numero_conta_origem);
 
-  const contaDestino = contas.find((conta) => {
-    return conta.numero === Number(numero_conta_destino);
-  });
+  const contaDestino = filtrarConta(numero_conta_destino);
 
   if (!contaOrigem) {
     return res
